@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Snoper Site</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Impact, sans-serif;
+        color: white;
+        background: linear-gradient(135deg, #3b0a72, #7e2dd2, #b87fff);
+        background-size: 300% 300%;
+        animation: gradientMove 12s ease infinite;
+        text-align: center;
+    }@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.title-rot {
+    font-size: 40px;
+    margin-top: 40px;
+    font-weight: 900;
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.25);
+    display: inline-block;
+    border-radius: 12px;
+    animation: rot 2s infinite alternate linear;
+    will-change: transform;
+}
+
+@keyframes rot {
+    0% { transform: rotate(-3deg); }
+    100% { transform: rotate(3deg); }
+}
+
+.menu {
+    margin-top: 120px;
+}
+
+button {
+    display: block;
+    margin: 35px auto;
+    padding: 32px 48px;
+    font-size: 34px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Impact, sans-serif;
+    font-style: italic;
+    background: rgba(0,0,0,0.45);
+    color: white;
+    transition: none;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.support {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.4);
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    background: linear-gradient(135deg,#200544,#5d0fa8);
+    border-radius: 15px;
+    display: none;
+    text-align: left;
+    font-size: 18px;
+}
+
+.closeBtn {
+    float: right;
+    cursor: pointer;
+    font-size: 26px;
+    margin-top: -10px;
+}
+
+</style>
+</head>
+<body><div class="title-rot">Био Снопера</div><div class="menu">
+    <button onclick="showWin('win1')">Биография</button>
+    <button onclick="showWin('win2')">Социальные сети</button>
+    <button onclick="showWin('win3')">Характеристики ПК</button>
+    <button onclick="showWin('win4')">Отсчёт до ДР</button>
+    <button onclick="showWin('win5')">Кликер печенек</button>
+</div><a class="support" href="https://t.me/AnonSnoperOfic_bot">Поддержка</a>
+
+<a class="support" href="https://t.me/AnonSnoperOfic_bot">Поддержка</a>
+
+<!-- Окно 1 --><div id="win1" class="window">
+<span class="closeBtn" onclick="hideWin('win1')">✖</span>
+<p>
+1) Имя - Илья<br><br>
+2) Возраст - не скажу<br><br>
+3) Чем занимаешся - в основном бездельничаю, а так играю и монтирую видео<br><br>
+4) Во что играешь - ysflight, flightgear, roblox, minecraft, scp:cb, фнаф-пародии<br><br>
+5) Твой рост - метр есть<br><br>
+6) Когда ДР - 27.07<br><br>
+7) Цвет глаз - серо-зелёный<br><br>
+8) Чем занимаешся в свободное время? - так же как и в 3<br><br>
+9) Город проживания - Ебенград (черкассы)<br><br>
+10) Музыка — 6arelyhuman, 2rbina 2rista, And One, Miss Construction
+</p>
+</div><!-- Окно 2 --><div id="win2" class="window">
+<span class="closeBtn" onclick="hideWin('win2')">✖</span>
+<p>
+ ССЫЛКИ:<br><br>
+Телеграм канал — https://t.me/snoper_tgk<br><br>
+TikTok — @snoper228<br>
+Второй TikTok — @iksiik_<br><br>
+Личка в ТГ — @AnonSnoperOfic_bot<br><br>
+Steam — Gova_Sniper<br><br>
+Roblox — gova_sniper (Snoper)<br><br>
+YouTube — Snoper (@snoper_oficial)<br><br>
+Discord — snoper2.0
+</p>
+</div><!-- Окно 3 --><div id="win3" class="window">
+<span class="closeBtn" onclick="hideWin('win3')">✖</span>
+<p>
+ХАРАКТЕРИСТИКИ ПК<br><br
+2гб ОЗУ<br><br>
+2,2 ггерц процессор (intel duo...)<br><br>
+видеокарта: Radeon HD2600 PRO (512мб)<br><br>
+нацшники и микрофон: VINGA<br><br>
+клава, монитор, системник: benq<br><br>
+</p>
+</div><!-- Окно 4 — отсчёт --><div id="win4" class="window">
+<span class="closeBtn" onclick="hideWin('win4')">✖</span>
+<p id="timer"></p>
+</div><!-- Окно 5 — кликер --><div id="win5" class="window">
+<span class="closeBtn" onclick="hideWin('win5')">✖</span>
+<p>Печеньки: <span id="cookies">0</span></p>
+<img src="https://i.imgur.com/5c3QpXJ.png" alt="cookie" width="150" style="margin:15px; border-radius:20px;">
+<button onclick="addCookie()">Клик!</button>
+</div><script>
+function showWin(id){ document.getElementById(id).style.display='block'; }
+function hideWin(id){ document.getElementById(id).style.display='none'; }
+
+// Кликер
+let cookies = 0;
+function addCookie(){ cookies++; document.getElementById('cookies').innerHTML = cookies; }
+
+// Таймер отсчёта
+function updateTimer(){
+    const target = new Date('July 27, 2026 00:00:00');
+    const now = new Date();
+    const diff = target - now;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("timer").innerHTML = 
+        `До 27 июля 2026 осталось: ${days} дн, ${hours} ч, ${minutes} мин, ${seconds} сек`;
+}
+setInterval(updateTimer, 1000);
+</script></body>
+</html>
